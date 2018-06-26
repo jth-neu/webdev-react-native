@@ -25,7 +25,7 @@ class CourseList extends Component {
             <View style={{padding: 15}}>
                 <Text h1>Course List</Text>
                 {this.state.courses.map((course, index) => (
-                    <ListItem title={course.title + course.id} key={index}
+                    <ListItem title={course.title} key={index}
                     onPress={()=>this.props.navigation.navigate('ModuleList',{CourseId:course.id})}/>
                 ))}
             </View>
