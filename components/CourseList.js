@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Alert} from 'react-native'
+import {View} from 'react-native'
 import {Text, ListItem} from 'react-native-elements'
 
 class CourseList extends Component {
@@ -25,7 +25,8 @@ class CourseList extends Component {
             <View style={{padding: 15}}>
                 <Text h1>Course List</Text>
                 {this.state.courses.map((course, index) => (
-                    <ListItem title={course.title} key={index}/>
+                    <ListItem title={course.title + course.id} key={index}
+                    onPress={()=>this.props.navigation.navigate('ModuleList',{CourseId:course.id})}/>
                 ))}
             </View>
         )

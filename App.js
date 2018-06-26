@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, View } from 'react-native';
 import {createStackNavigator } from 'react-navigation';
 import CourseList from './components/CourseList';
+import ModuleList from './components/ModuleList';
 
 class Home extends React.Component {
     static navigationOptions = {
@@ -22,7 +23,8 @@ class Home extends React.Component {
 
 const App = createStackNavigator({
     Home,
-    CourseList
+    CourseList,
+    ModuleList
 });
 
 export default App;
