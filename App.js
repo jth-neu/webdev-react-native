@@ -4,6 +4,7 @@ import {createStackNavigator } from 'react-navigation';
 import CourseList from './components/CourseList';
 import ModuleList from './components/ModuleList';
 import LessonList from './components/LessonList';
+import WidgetList from './components/WidgetList';
 
 class Home extends React.Component {
     static navigationOptions = {
@@ -26,7 +27,8 @@ const App = createStackNavigator({
     Home,
     CourseList,
     ModuleList,
-    LessonList
+    LessonList,
+    WidgetList
 });
 
 export default App;
