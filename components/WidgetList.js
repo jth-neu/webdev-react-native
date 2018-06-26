@@ -38,7 +38,9 @@ class WidgetList extends Component {
                     (assignment, index) => (
                         <ListItem
                             key={index}
-                            title={assignment.title}/>
+                            title={assignment.title}
+                            onPress={() => this.props.navigation.navigate("AssignmentWidget",
+                                    {lessonId: this.state.lessonId, assignment: assignment})}/>
                     )
                 )}
             </View>
