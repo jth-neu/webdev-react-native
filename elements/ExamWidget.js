@@ -16,7 +16,7 @@ class ExamWidget extends Component {
             title:  props.navigation.getParam("exam").title,
             description:  props.navigation.getParam("exam").description,
             points:  props.navigation.getParam("exam").points,
-            questionType: 'MC',
+            questionType: 'choice',
             questions: props.navigation.getParam('exam').questions
         }
 
@@ -69,8 +69,6 @@ class ExamWidget extends Component {
                 return;
         }
 
-        console.log(question)
-
         return fetch('http://localhost:8080/api/exam/'+this.state.exam.id+'/'+questionType,
             {
                 headers: {'content-type': 'application/json'},
@@ -80,6 +78,33 @@ class ExamWidget extends Component {
             .then((question) => {
                 this.setState({questions: [...this.state.questions, question]})
             })
+    }
+
+    questionEditorNavigator(question) {
+        switch(question.type) {
+            case "essay":
+                this.props.navigation.navigate("EssayQuestionWidget",{
+                    question: question
+                })
+                break;
+            case "truefalse":
+                this.props.navigation.navigate("TrueOrFalseQuestionWidget",{
+                    question: question
+                })
+                break;
+            case "choice":
+                this.props.navigation.navigate("MultipleChoiceQuestionWidget",{
+                    question: question
+                })
+                break;
+            case "blanks":
+                this.props.navigation.navigate("FillInTheBlanksQuestionWidget",{
+                    question: question
+                })
+                break;
+            default:
+                return;
+        }
     }
 
     render() {
@@ -116,17 +141,9 @@ class ExamWidget extends Component {
                             borderBottomWidth: 1,
                         }}
                     />
-                    // Questions
-                    <Text h3>Questions</Text>
-                    {this.state.questions.map( (question, index) => (
-                        <ListItem
-                            key={index}
-                            title={question.title}/>
-                    ))}
 
-
+                    // Add questions
                     <Text h3>Add Question To Exam</Text>
-                    <Text>{this.state.questionType}</Text>
                     <Picker
                         selectedValue={this.state.questionType}
                         onValueChange={(itemValue, itemIndex) =>
@@ -139,6 +156,23 @@ class ExamWidget extends Component {
                     <Button title="Add new question"
                             color="green"
                             onPress={() => this.addQuestion()}/>
+
+                    <View
+                        style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                        }}
+                    />
+
+                    // Questions
+                    <Text h3>Questions</Text>
+                    {this.state.questions.map((question, index) => (
+                        <ListItem
+                            key={index}
+                            title={question.title}
+                            onPress={()=>this.questionEditorNavigator(question)}/>
+                    ))}
+
                 </View>
             </ScrollView>
         )
