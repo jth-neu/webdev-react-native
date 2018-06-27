@@ -92,7 +92,9 @@ class WidgetList extends Component {
                             key={index}
                             title={assignment.title}
                             onPress={() => this.props.navigation.navigate("AssignmentWidget",
-                                    {lessonId: this.state.lessonId, assignment: assignment, updateFunction:()=> this.isUpdated()})}/>
+                                    {lessonId: this.state.lessonId,
+                                        assignment: assignment,
+                                        updateFunction:()=> this.isUpdated()})}/>
                     )
                 )}
 
@@ -112,7 +114,10 @@ class WidgetList extends Component {
                     (exam, index) => (
                         <ListItem
                             key={index}
-                            title={exam.title}/>
+                            title={exam.title}
+                            onPress={() => this.props.navigation.navigate("ExamWidget",
+                                {lessonId: this.state.lessonId, exam: exam,
+                                    updateFunction:()=> this.isUpdated()})}/>
                     )
                 )
                 }
