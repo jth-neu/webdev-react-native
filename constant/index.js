@@ -11,6 +11,7 @@ export const MultipleChoice = {
     "description": "Description for Multiple Choice Question",
     "points": 0,
     "choices": "",
+    "correctChoice":0,
     "type": "choice"
 }
 
