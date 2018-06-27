@@ -17,7 +17,8 @@ class ExamWidget extends Component {
             description:  props.navigation.getParam("exam").description,
             points:  props.navigation.getParam("exam").points,
             questionType: 'choice',
-            questions: props.navigation.getParam('exam').questions
+            questions: props.navigation.getParam('exam').questions,
+            updated: false
         }
 
         this.updateForm = this.updateForm.bind(this);
@@ -84,27 +85,36 @@ class ExamWidget extends Component {
         switch(question.type) {
             case "essay":
                 this.props.navigation.navigate("EssayQuestionWidget",{
-                    question: question
+                    question: question,
+                    updateFunction:()=> this.isUpdated()
                 })
                 break;
             case "truefalse":
                 this.props.navigation.navigate("TrueOrFalseQuestionWidget",{
-                    question: question
+                    question: question,
+                    updateFunction:()=> this.isUpdated()
                 })
                 break;
             case "choice":
                 this.props.navigation.navigate("MultipleChoiceQuestionWidget",{
-                    question: question
+                    question: question,
+                    updateFunction:()=> this.isUpdated()
                 })
                 break;
             case "blanks":
                 this.props.navigation.navigate("FillInTheBlanksQuestionWidget",{
-                    question: question
+                    question: question,
+                    updateFunction:()=> this.isUpdated()
                 })
                 break;
             default:
                 return;
         }
+    }
+
+    isUpdated() {
+        const update = this.state.updated
+        this.setState({updated:!update})
     }
 
     render() {
@@ -170,7 +180,8 @@ class ExamWidget extends Component {
                         <ListItem
                             key={index}
                             title={question.title}
-                            onPress={()=>this.questionEditorNavigator(question)}/>
+                            onPress={()=>this.questionEditorNavigator(question)
+                            }/>
                     ))}
 
                 </View>
