@@ -16,7 +16,6 @@ class WidgetList extends Component {
     componentDidMount() {
         const lessonId = this.props.navigation.getParam("LessonId");
         this.setState({lessonId});
-
         this.findAllAssignments(lessonId);
     }
 

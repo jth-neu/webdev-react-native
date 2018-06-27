@@ -99,17 +99,17 @@ class AssignmentWidget extends Component {
                     <FormInput />
 
                     <FormLabel>Upload a file</FormLabel>
-                    <Button title="Choose File" />
+                    <Button title="Choose File" onPress={() =>this.placeholderFunction()}/>
 
                     <FormLabel>Submit a link</FormLabel>
                     <FormInput/>
 
                     <View style={{flexDirection:"row"}}>
                         <View style={{flex:1}}>
-                            <Button color="blue" title="Submit"/>
+                            <Button color="blue" title="Submit" onPress={() =>this.placeholderFunction()}/>
                         </View>
                         <View style={{flex:1}}>
-                            <Button color="red" title="Cancel"/>
+                            <Button color="red" title="Cancel" onPress={() =>this.placeholderFunction()}/>
                         </View>
                     </View>
 
@@ -118,5 +118,7 @@ class AssignmentWidget extends Component {
         )
     }
 }
+
+placeholderFunction = () => {}
 
 export default AssignmentWidget
