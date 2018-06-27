@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View} from 'react-native'
+import {View, Button} from 'react-native'
 import {ListItem} from 'react-native-elements'
 
 class WidgetList extends Component {
@@ -28,6 +28,23 @@ class WidgetList extends Component {
             });
     }
 
+    addAssignment(lessonId) {
+        return fetch("http://localhost:8080/api/lesson/"+lessonId+"/assignment",
+            {
+                headers: {"content-type": "application/json"},
+                method: "POST",
+                body: JSON.stringify({
+                    title: "new assignment",
+                    points: 0,
+                    description: "Description for new assignment"
+                })
+            })
+            .then((response) => response.json())
+            .then((assignment) => this.setState({
+                assignments: [...this.state.assignments, assignment]
+            }));
+    }
+
 
     render() {
         return(
@@ -42,6 +59,10 @@ class WidgetList extends Component {
                                     {lessonId: this.state.lessonId, assignment: assignment})}/>
                     )
                 )}
+
+                <Button title="Add a new assignment"
+                        color="green"
+                        onPress={() => this.addAssignment(this.state.lessonId)}/>
             </View>
         )
     }
