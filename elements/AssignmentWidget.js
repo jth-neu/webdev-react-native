@@ -38,6 +38,7 @@ class AssignmentWidget extends Component {
                     'content-type': 'application/json'}
             }).then(() => {
                 Alert.alert("Save Succeed.")
+                this.props.navigation.state.params.updateFunction()
                 this.props.navigation.goBack()
             })
     }

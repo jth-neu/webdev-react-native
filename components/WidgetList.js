@@ -11,6 +11,7 @@ class WidgetList extends Component {
             courseId: 1,
             moduleId: 1,
             lessonId: 1,
+            updated: false
         }
     }
     componentDidMount() {
@@ -45,6 +46,11 @@ class WidgetList extends Component {
             }));
     }
 
+    isUpdated() {
+        const update = this.state.updated
+        this.setState({updated:!update})
+    }
+
 
     render() {
         return(
@@ -56,7 +62,7 @@ class WidgetList extends Component {
                             key={index}
                             title={assignment.title}
                             onPress={() => this.props.navigation.navigate("AssignmentWidget",
-                                    {lessonId: this.state.lessonId, assignment: assignment})}/>
+                                    {lessonId: this.state.lessonId, assignment: assignment, updateFunction:()=> this.isUpdated()})}/>
                     )
                 )}
 
