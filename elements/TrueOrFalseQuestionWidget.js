@@ -29,7 +29,7 @@ export default class TrueOrFalseQuestionWidget extends React.Component {
         this.state.question.points = this.state.points;
         this.state.question.isTrue = this.state.isTrue;
 
-        fetch('http://localhost:8080/api/truefalse/'+this.state.question.id,
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/truefalse/'+this.state.question.id,
             {
                 method: 'put',
                 body: JSON.stringify(this.state.question),

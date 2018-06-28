@@ -13,7 +13,7 @@ class CourseList extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/api/course')
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/course')
             .then(response => (response.json()))
             .then(courses => {
                 this.setState({courses: courses})

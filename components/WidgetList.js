@@ -23,7 +23,7 @@ class WidgetList extends Component {
 
     findAllAssignments(lessonId) {
         return fetch(
-            "http://localhost:8080/api/lesson/"+lessonId+"/assignment")
+            "https://webdev-summer2018-jthuang.herokuapp.com/api/lesson/"+lessonId+"/assignment")
             .then(response => (response.json()))
             .then(assignments => {
                 this.setState({assignments})
@@ -31,7 +31,7 @@ class WidgetList extends Component {
     }
 
     addAssignment(lessonId) {
-        return fetch("http://localhost:8080/api/lesson/"+lessonId+"/assignment",
+        return fetch("https://webdev-summer2018-jthuang.herokuapp.com/api/lesson/"+lessonId+"/assignment",
             {
                 headers: {"content-type": "application/json"},
                 method: "POST",
@@ -54,7 +54,7 @@ class WidgetList extends Component {
 
     findAllExams(lessonId) {
         return fetch(
-            "http://localhost:8080/api/lesson/"+lessonId+"/exam")
+            "https://webdev-summer2018-jthuang.herokuapp.com/api/lesson/"+lessonId+"/exam")
             .then(response => (response.json()))
             .catch(response => console.log(response))
             .then(exams => {
@@ -63,7 +63,7 @@ class WidgetList extends Component {
     }
 
     addExam(lessonId) {
-        return fetch("http://localhost:8080/api/lesson/"+lessonId+"/exam",
+        return fetch("https://webdev-summer2018-jthuang.herokuapp.com/api/lesson/"+lessonId+"/exam",
             {
                 headers: {"content-type": "application/json"},
                 method: "POST",

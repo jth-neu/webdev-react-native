@@ -26,7 +26,7 @@ export default class EssayQuestionWidget extends React.Component {
         this.state.question.description = this.state.description;
         this.state.question.points = this.state.points;
 
-        fetch('http://localhost:8080/api/essay/'+this.state.question.id,
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/essay/'+this.state.question.id,
             {
                 method: 'put',
                 body: JSON.stringify(this.state.question),

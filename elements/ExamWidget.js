@@ -34,7 +34,7 @@ class ExamWidget extends Component {
         this.state.exam.description = this.state.description;
         this.state.exam.points = this.state.points;
 
-        fetch('http://localhost:8080/api/exam/' + this.state.exam.id,
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/exam/' + this.state.exam.id,
             {
                 method: 'put',
                 body: JSON.stringify(this.state.exam),
@@ -70,7 +70,7 @@ class ExamWidget extends Component {
                 return;
         }
 
-        return fetch('http://localhost:8080/api/exam/'+this.state.exam.id+'/'+questionType,
+        return fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/exam/'+this.state.exam.id+'/'+questionType,
             {
                 headers: {'content-type': 'application/json'},
                 method: "POST",

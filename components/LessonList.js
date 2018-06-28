@@ -15,7 +15,7 @@ class LessonList extends Component {
     componentDidMount() {
         const courseId = this.props.navigation.getParam("CourseId")
         const moduleId = this.props.navigation.getParam("ModuleId")
-        fetch("http://localhost:8080/api/course/"+courseId+"/module/"+moduleId+"/lesson")
+        fetch("https://webdev-summer2018-jthuang.herokuapp.com/api/course/"+courseId+"/module/"+moduleId+"/lesson")
             .then(response => (response.json()))
             .then(lessons => this.setState({lessons}))
     }

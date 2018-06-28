@@ -28,7 +28,7 @@ export default class FillInTheBlanksQuestionWidget extends React.Component {
         this.state.question.points = this.state.points;
         this.state.question.variables = this.state.variables;
 
-        fetch('http://localhost:8080/api/blanks/'+this.state.question.id,
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/blanks/'+this.state.question.id,
             {
                 method: 'put',
                 body: JSON.stringify(this.state.question),

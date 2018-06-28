@@ -43,7 +43,7 @@ export default class MultipleChoiceQuestionWidget extends React.Component {
         this.state.question.choices = this.state.choices;
         this.state.question.correctChoice = this.state.correctChoice;
 
-        fetch('http://localhost:8080/api/choice/'+this.state.question.id,
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/choice/'+this.state.question.id,
             {
                 method: 'put',
                 body: JSON.stringify(this.state.question),

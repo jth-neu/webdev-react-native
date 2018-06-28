@@ -30,7 +30,7 @@ class AssignmentWidget extends Component {
         this.state.assignment.description = this.state.description;
         this.state.assignment.points = this.state.points;
         console.log(this.state.assignment)
-        fetch('http://localhost:8080/api/assignment/'+this.state.assignment.id,
+        fetch('https://webdev-summer2018-jthuang.herokuapp.com/api/assignment/'+this.state.assignment.id,
             {
                 method: 'put',
                 body: JSON.stringify(this.state.assignment),
